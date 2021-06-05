@@ -16,4 +16,13 @@ This module runs as a daemon syncs VMWare machines IP's to a Route53 subdomain
 
 ### How to use this?
 
-This can be run stand alone, but it was originally designed to run like a Kubernetes controller
+This can be run stand alone with some modifications, but it was originally designed to run like a Kubernetes controller.
+Refer to the sequence diagram. Kubernetes is used as a storage of the `service-name` which is the high level domain name used to map R53 and VMWare.
+
+* AWS Setup (use the CLI and authenticate with relevant permissions)
+* A VMWare Cluster - authenticated with `VMWARE_USERNAME` and `VMWARE_PASSWORD`. `VMWARE_SDDC_URL` for the Cluster URL
+* Kubernetes cluster. Setup with kubectl access
+* The Configmaps are expected to be labeled `vm-status` to avoid polling all Configmaps
+
+Thereafter the daemon will sync and sleep in tandem
+

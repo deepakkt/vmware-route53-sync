@@ -69,7 +69,7 @@ func getConfigmaps() ([]v1.ConfigMap, error) {
 
 	configMaps, err := kubeClient.CoreV1().ConfigMaps("").List(context.TODO(),
 			metav1.ListOptions{
-				 LabelSelector: "kind=devhub-vm-status",
+				 LabelSelector: "kind=vm-status",
 			},
 		)
 
